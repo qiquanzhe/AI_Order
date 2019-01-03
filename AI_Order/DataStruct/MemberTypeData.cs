@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AI_Order.DataStruct
 {
-    class MemberTypeData
+    public class MemberTypeData
     {
         public int MtId;
         public String MTitle;

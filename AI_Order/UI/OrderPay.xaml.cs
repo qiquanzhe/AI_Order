@@ -88,15 +88,9 @@ namespace AI_Order
             String MbName = MemberName.Text;
             List<MemberInfoData> memberInfoDatas = MemberInfoConnector.GetMembers(MbPhone, MbName);
             if(memberInfoDatas.Count > 1)
-            {
-                MessageBox.Show("相似项过多，请详细输入！");
                 return;
-            }
             else if(memberInfoDatas.Count == 0)
-            {
-                MessageBox.Show("未查找到相关会员信息！");
                 return;
-            }
             else
             {
                 MemberInfo = memberInfoDatas[0];

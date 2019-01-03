@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using AI_Order.DataStruct;
+using System.Windows;
 
 namespace AI_Order.Connector
 {
@@ -160,6 +161,61 @@ namespace AI_Order.Connector
                     );
             }
             return memberTypeData;
+        }
+
+        /**
+         * 向数据库中添加会员，先检查是否存在该手机号和姓名的组合
+         * */
+        public static int InsertMember(int MtId,String MbName,String MbPhone,Double MbMoney)
+        {
+            List<MemberInfoData> memberInfoDatas = GetMembers(MbPhone, MbName);
+            if (memberInfoDatas.Count > 0)
+                return -1;
+
+            String connectStr = ConnectorInfo.connectStr;
+            MySqlConnection conn = new MySqlConnection(connectStr);
+            conn.Open();
+
+            String sql = "insert into memberinfo(MtId,MbName,MbPhone,MbMoney) values(" +
+                MtId + ",'" + MbName + "','" + MbPhone + "'," + MbMoney+")";
+            //MessageBox.Show(sql);
+            MySqlCommand mySqlCommand = new MySqlCommand(sql, conn);
+            return mySqlCommand.ExecuteNonQuery();
+            //return 1;
+        }
+
+        /**
+         * 修改会员，只能修改会员余额和会员类型
+         * */
+        public static int ModifyMember(int MtId, String MbName, String MbPhone, Double MbMoney)
+        {
+            List<MemberInfoData> memberInfoDatas = GetMembers(MbPhone, MbName);
+            if (memberInfoDatas.Count == 0)
+                return -1;
+
+            String connectStr = ConnectorInfo.connectStr;
+            MySqlConnection conn = new MySqlConnection(connectStr);
+            conn.Open();
+
+            String sql = "update memberinfo set MtId=" + MtId + ",MbMoney=" + MbMoney +
+                " where MbPhone='" + MbPhone + "' and MbName='" + MbName + "'";
+            MySqlCommand mySqlCommand = new MySqlCommand(sql, conn);
+
+            return mySqlCommand.ExecuteNonQuery();
+        }
+
+        /**
+         * 删除会员
+         * */
+        public static int DeleteMember(String MbName, String MbPhone)
+        {
+            String connectStr = ConnectorInfo.connectStr;
+            MySqlConnection conn = new MySqlConnection(connectStr);
+            conn.Open();
+
+            String sql = "delete from memberinfo where MbName='" + MbName + "' and MbPhone='" + MbPhone + "'";
+            MySqlCommand mySqlCommand = new MySqlCommand(sql, conn);
+            return mySqlCommand.ExecuteNonQuery();
         }
     }
 }

@@ -61,6 +61,9 @@ namespace AI_Order
          * */
         private void LoadAllMember()
         {
+            if(memberInfoDatas != null)
+            for (int i = 0; i < memberInfoDatas.Count; i++)
+                MemberList.Items.RemoveAt(0);
             memberInfoDatas = MemberInfoConnector.GetMembers();
             foreach (MemberInfoData infoData in memberInfoDatas)
             {
@@ -137,14 +140,182 @@ namespace AI_Order
             }
         }
 
+        //选中会员，加载到界面中
         private void MemberList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListBoxItem listBoxItem = (ListBoxItem)MemberList.SelectedItem;
+            if (listBoxItem == null)
+            {
+                return;
+            }
             PayInfo payInfo = (PayInfo)listBoxItem.Content;
             MemberTypes.SelectedIndex = MemberInfoConnector.GetMemberType(payInfo.DName.Text).MtId - 1;
             MemberName.Text = payInfo.DPrice.Text;
             MemberMoney.Text = payInfo.DNumber.Text;
             MemberPhone.Text = payInfo.DSum.Text;
+        }
+
+        //正则验证手机号
+        private bool IsMobilePhone(string input)
+        {
+            if (input.Length == 0)
+            {
+                return false;
+            }
+            else if (input.Length != 11)
+            {
+                return false;
+            }
+            return System.Text.RegularExpressions.Regex.IsMatch(input, @"^[1]+[3,4,5,7,8]+\d{9}");
+        }
+
+        /**
+         * 添加会员事件：
+         * 验证不为空、验证手机号和余额、后台验证重复
+         * 返回-1表示重复、返回1表示成功、返回其他值插入失败
+         * */
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(MemberName.Text == ""||MemberPhone.Text == ""||MemberMoney.Text == "")
+            {
+                MessageBox.Show("信息未填写完整");
+                return;
+            }
+
+            if(!IsMobilePhone(MemberPhone.Text))
+            {
+                MessageBox.Show("手机号码填写不正确");
+                return;
+            }
+
+            if (!Double.TryParse(MemberMoney.Text, out double MbMoney))
+            {
+                MessageBox.Show("余额格式不正确");
+                return;
+            }
+
+            int IsInserted =
+                MemberInfoConnector.InsertMember(MemberTypes.SelectedIndex+1,MemberName.Text, MemberPhone.Text, MbMoney);
+
+            if(IsInserted == -1)
+            {
+                MessageBox.Show("已存在的会员");
+                return;
+            }
+            else if(IsInserted != 1)
+            {
+                MessageBox.Show("插入失败");
+                return;
+            }
+            else
+            {
+                MessageBox.Show("添加成功");
+                MemberList.SelectedIndex = -1;
+                MemberName.Text = "";
+                MemberPhone.Text = "";
+                MemberMoney.Text = "";
+                MemberTypes.SelectedIndex = 0;
+                LoadAllMember();
+            }
+        }
+
+        /**
+         * 修改会员事件：
+         * 验证不为空、验证手机号和余额、后台验证会员是否存在
+         * 返回-1表示不存在、返回1表示成功、返回其他值修改失败
+         * 仅可修改余额和会员类型，手机号和姓名做会员的唯一标志
+         * */
+        private void ModifyButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (MemberName.Text == "" || MemberPhone.Text == "" || MemberMoney.Text == "")
+            {
+                MessageBox.Show("信息未填写完整");
+                return;
+            }
+
+            if (!IsMobilePhone(MemberPhone.Text))
+            {
+                MessageBox.Show("手机号码填写不正确");
+                return;
+            }
+
+            if (!Double.TryParse(MemberMoney.Text, out double MbMoney))
+            {
+                MessageBox.Show("余额格式不正确");
+                return;
+            }
+
+            int ModifiedMember = 
+                MemberInfoConnector.ModifyMember(MemberTypes.SelectedIndex + 1, MemberName.Text, MemberPhone.Text, MbMoney);
+            if(ModifiedMember == -1)
+            {
+                MessageBox.Show("该会员不存在(仅可更改会员类型和余额)");
+                return;
+            }
+            if (ModifiedMember != 1)
+            {
+                MessageBox.Show("修改失败");
+                return;
+            }
+
+            else
+            {
+                MessageBox.Show("修改成功");
+                MemberList.SelectedIndex = -1;
+                MemberName.Text = "";
+                MemberPhone.Text = "";
+                MemberMoney.Text = "";
+                MemberTypes.SelectedIndex = 0;
+                LoadAllMember();
+            }
+        }
+
+        /**
+         * 删除会员：
+         * 判断是否选中，没有选中直接返回
+         * 对选中的值进行提取，删除数据库中的数据
+         * */
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(MemberList.SelectedIndex == -1)
+            {
+                MessageBox.Show("请先选中会员信息！");
+                return;
+            }
+            ListBoxItem listBoxItem = (ListBoxItem)MemberList.SelectedItem;
+            PayInfo payInfo = (PayInfo)listBoxItem.Content;
+            /*MemberTypes.SelectedIndex = MemberInfoConnector.GetMemberType(payInfo.DName.Text).MtId - 1;
+            MemberName.Text = payInfo.DPrice.Text;
+            MemberMoney.Text = payInfo.DNumber.Text;
+            MemberPhone.Text = payInfo.DSum.Text;*/
+
+            int IsDeleted = 
+                MemberInfoConnector.DeleteMember(payInfo.DPrice.Text, payInfo.DSum.Text);
+
+            if(IsDeleted != 1)
+            {
+                MessageBox.Show("删除失败");
+                return;
+            }
+            else
+            {
+                MessageBox.Show("删除成功");
+                MemberList.SelectedIndex = -1;
+                MemberName.Text = "";
+                MemberPhone.Text = "";
+                MemberMoney.Text = "";
+                MemberTypes.SelectedIndex = 0;
+                LoadAllMember();
+            }
+
+        }
+
+
+        private void TypeWindow_Click(object sender, RoutedEventArgs e)
+        {
+            MemberType memberType = new MemberType(Type);
+            memberType.Show();
+            Close();
         }
     }
 }

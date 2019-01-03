@@ -19,8 +19,11 @@ namespace AI_Order
     /// </summary>
     public partial class MemberType : Window
     {
-        public MemberType()
+        private int LoginType;
+        public MemberType(int type)
         {
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;//显示在屏幕中间
+            LoginType = type;
             InitializeComponent();
         }
 

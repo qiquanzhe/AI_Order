@@ -123,6 +123,9 @@
     <Compile Include="UI\HallInfo.xaml.cs">
       <DependentUpon>HallInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\InfomationTable.xaml.cs">
+      <DependentUpon>InfomationTable.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\MainMenuWindow.xaml.cs">
       <DependentUpon>MainMenuWindow.xaml</DependentUpon>
     </Compile>
@@ -175,6 +178,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\HallInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\InfomationTable.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
