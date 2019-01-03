@@ -217,5 +217,64 @@ namespace AI_Order.Connector
             MySqlCommand mySqlCommand = new MySqlCommand(sql, conn);
             return mySqlCommand.ExecuteNonQuery();
         }
+
+        /**
+         * 添加会员类型
+         * 返回-1表示该类型名已存在
+         * */
+        public static int InsertMemberType(String MTitle,double MDiscount)
+        {
+            if (GetMemberType(MTitle) != null)
+                return -1;
+
+            String connectStr = ConnectorInfo.connectStr;
+            MySqlConnection conn = new MySqlConnection(connectStr);
+            conn.Open();
+
+            String sql = "insert into membertypeinfo(MTitle,MDiscount) values('" + MTitle + "'," + MDiscount + ")";
+            MySqlCommand mySqlCommand = new MySqlCommand(sql, conn);
+
+            return mySqlCommand.ExecuteNonQuery();
+        }
+
+        /**
+         * 修改会员类型的折扣
+         * */
+        public static int ModifyMemberType(String MTitle, double MDiscount)
+        {
+            if (GetMemberType(MTitle) == null)
+                return -1;
+
+            String connectStr = ConnectorInfo.connectStr;
+            MySqlConnection conn = new MySqlConnection(connectStr);
+            conn.Open();
+
+            String sql = "update membertypeinfo set MDiscount=" + MDiscount + " where MTitle='" + MTitle + "'";
+            MySqlCommand mySqlCommand = new MySqlCommand(sql, conn);
+
+            return mySqlCommand.ExecuteNonQuery();
+        }
+
+        /**
+         * 删除会员类型
+         * */
+        public static int DeleteMemberType(String MTitle)
+        {
+            if (GetMemberType(MTitle) == null)
+                return -1;
+
+            String connectStr = ConnectorInfo.connectStr;
+            MySqlConnection conn = new MySqlConnection(connectStr);
+            conn.Open();
+
+            MemberTypeData memberTypeData = GetMemberType(MTitle);
+            String sql = "update memberinfo set MtId=5 where MtId=" + memberTypeData.MtId;
+            MySqlCommand mySqlCommand = new MySqlCommand(sql, conn);
+            mySqlCommand.ExecuteNonQuery();
+
+            sql = "delete from membertypeinfo where MTitle='" + MTitle + "'";
+            mySqlCommand = new MySqlCommand(sql, conn);
+            return mySqlCommand.ExecuteNonQuery();
+        }
     }
 }

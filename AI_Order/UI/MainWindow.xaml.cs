@@ -83,7 +83,7 @@ namespace AI_Order
 
         private void Button1_Clicktemp(object sender, RoutedEventArgs e)
         {
-            MainMenuWindow mainMenuWindow = new MainMenuWindow(0);
+            MainMenuWindow mainMenuWindow = new MainMenuWindow(1);
             mainMenuWindow.Show();
             this.Close();
         }

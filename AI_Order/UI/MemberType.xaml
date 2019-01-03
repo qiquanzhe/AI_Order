@@ -19,7 +19,7 @@
         <materialDesign:Card Padding="0" Margin="10,10,94,0" Height="56">
             <TextBlock VerticalAlignment="Center" Style="{DynamicResource MaterialDesignTitleTextBlock}" Foreground="#70D6BD" FontSize="26" FontWeight="Bold" FontFamily="华文隶书" HorizontalAlignment="Left" Width="212" Margin="22,18,0,8" Height="30">会员类型管理界面</TextBlock>
         </materialDesign:Card>
-        <Button Style="{DynamicResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" Margin="369,19,0,0" VerticalAlignment="Top" Width="38" Height="38" Background="#FFFF8B00">
+        <Button Name="BackButton" Style="{DynamicResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" Margin="369,19,0,0" VerticalAlignment="Top" Width="38" Height="38" Background="#FFFF8B00" Click="BackButton_Click">
             <Path Data="M19,3H5C3.89,3 3,3.89 3,5V9H5V5H19V19H5V15H3V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10.08,15.58L11.5,17L16.5,12L11.5,7L10.08,8.41L12.67,11H3V13H12.67L10.08,15.58Z" Fill="White" Height="22.667" Stretch="Fill" Width="23.667" />
         </Button>
         <TextBlock Text="会员类型列表" FontSize="18" Margin="10,71,0,0" HorizontalAlignment="Left" Width="115" Height="28" VerticalAlignment="Top"/>
@@ -27,14 +27,14 @@
             <Canvas Height="84" Margin="0,0,0,-1" VerticalAlignment="Top" Width="200">
                 <TextBlock TextWrapping="Wrap" Text="会员类型"/>
                 <TextBlock TextWrapping="Wrap" Text="折        扣" Canvas.Top="26" Width="56"/>
-                <Button Content="添加" FontSize="12" Padding="2" Canvas.Top="58" Width="87" Height="22"/>
-                <Button Content="修改" FontSize="12" Padding="2" Canvas.Top="58" Width="87" Height="22" Canvas.Left="113"/>
-                <TextBox Height="21" FontSize="10" Canvas.Left="70" TextWrapping="Wrap" Width="130"/>
-                <TextBox Height="21" FontSize="10" Canvas.Left="70" TextWrapping="Wrap" Width="130" Canvas.Top="26"/>
+                <Button Name="AddTypeButton" Content="添加" FontSize="12" Padding="2" Canvas.Top="58" Width="87" Height="22" Click="AddTypeButton_Click"/>
+                <Button Name="ModifyTypeButton" Content="修改" FontSize="12" Padding="2" Canvas.Top="58" Width="87" Height="22" Canvas.Left="113" Click="ModifyTypeButton_Click"/>
+                <TextBox Name="MemberTypeBox" Height="21" FontSize="10" Canvas.Left="70" TextWrapping="Wrap" Width="130"/>
+                <TextBox Name="MemberDiscountBox" Height="21" FontSize="10" Canvas.Left="70" TextWrapping="Wrap" Width="130" Canvas.Top="26"/>
             </Canvas>
         </GroupBox>
-        <Button Content="删除选中" HorizontalAlignment="Left" Margin="209,257,0,0" VerticalAlignment="Top" Width="215" Background="red"/>
-        <ListBox HorizontalAlignment="Left" Height="159" Margin="10,130,0,0" VerticalAlignment="Top" Width="194" Background="#40009892"/>
+        <Button Name="DeleteSelectedButton" Content="删除选中" HorizontalAlignment="Left" Margin="209,257,0,0" VerticalAlignment="Top" Width="215" Background="red" Click="DeleteSelectedButton_Click"/>
+        <ListBox Name="MemberTypeList" HorizontalAlignment="Left" Height="159" Margin="10,130,0,0" VerticalAlignment="Top" Width="194" Background="#40009892" SelectionChanged="MemberTypeList_SelectionChanged"/>
         <WrapPanel HorizontalAlignment="Left" Height="26" Margin="10,104,0,0" VerticalAlignment="Top" Width="194" Background="#40009892">
             <Rectangle Width="20"/>
             <TextBlock Padding="2" Text="会员类型" Height="24"/>

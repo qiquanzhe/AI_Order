@@ -25,7 +25,7 @@ namespace AI_Order
         private int Type;
         private List<MemberInfoData> memberInfoDatas;
         private List<MemberTypeData> memberTypeDatas;
-        private MemberInfoData MemberInfoData;
+        //private MemberInfoData MemberInfoData;
 
         public MemberInfo(int type)
         {
@@ -62,8 +62,8 @@ namespace AI_Order
         private void LoadAllMember()
         {
             if(memberInfoDatas != null)
-            for (int i = 0; i < memberInfoDatas.Count; i++)
-                MemberList.Items.RemoveAt(0);
+                for (int i = 0; i < memberInfoDatas.Count; i++)
+                    MemberList.Items.RemoveAt(0);
             memberInfoDatas = MemberInfoConnector.GetMembers();
             foreach (MemberInfoData infoData in memberInfoDatas)
             {

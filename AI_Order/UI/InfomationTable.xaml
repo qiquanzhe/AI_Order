@@ -5,11 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AI_Order.UI"
              mc:Ignorable="d" 
-             d:DesignHeight="20" d:DesignWidth="190">
-    <WrapPanel>
-        <Rectangle Width="23"/>
-        <TextBlock Name="Left_TB" Padding="2" Text="示例文字1"/>
-        <Rectangle Width="28"/>
-        <TextBlock Name="Right_TB" Padding="2" Text="示例文字2"/>
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+            TextElement.FontWeight="Medium"
+            TextElement.FontSize="14"
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+            TextOptions.TextFormattingMode="Ideal" 
+            TextOptions.TextRenderingMode="Auto"        
+            Background="{DynamicResource MaterialDesignPaper}"
+            FontFamily="Source Han Sans CN Normal"
+             d:DesignHeight="15" d:DesignWidth="190">
+    <WrapPanel Width="190">
+        <Rectangle Width="21"/>
+        <TextBlock Name="Left_TB" FontSize="10" Width="50" Padding="1" Text="示例文字1"/>
+        <Rectangle Width="43"/>
+        <TextBlock Name="Right_TB" FontSize="10" Width="50" Padding="1" Text="示例文字2"/>
+        <Rectangle Width="25"/>
     </WrapPanel>
 </UserControl>
