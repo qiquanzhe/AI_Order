@@ -10,48 +10,52 @@
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
         FontFamily="Source Han Sans CN Regular"
-        WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="True" MouseDown="WindowDrag" Width="485.156" Height="402.218">
+        WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="True" MouseDown="WindowDrag" Width="485.156" Height="424.218">
     <Grid Margin="0,0,10,0">
-        <DockPanel HorizontalAlignment="Left" Background="#009892" Height="30" LastChildFill="False" VerticalAlignment="Top" Width="484" Margin="0,0,-9,0">
+        <DockPanel HorizontalAlignment="Left" Background="#009892" Height="30" LastChildFill="False" VerticalAlignment="Top" Width="485" Margin="0,0,-10,0">
             <!--<Rectangle Width="50" Fill="Transparent"/>-->
             <TextBlock Height="30" Padding="4" FontFamily="华文隶书" FontSize="24" Foreground="white" TextWrapping="Wrap" Text="菜单管理" VerticalAlignment="Top" Width="326"/>
         </DockPanel>
         <Button Style="{DynamicResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" Margin="605,0,0,0" VerticalAlignment="Top" Width="30" Height="30" Background="#FFFF8B00">
             <Path Data="M19,3H5C3.89,3 3,3.89 3,5V9H5V5H19V19H5V15H3V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10.08,15.58L11.5,17L16.5,12L11.5,7L10.08,8.41L12.67,11H3V13H12.67L10.08,15.58Z" Fill="White" Height="14.625" Stretch="Fill" Width="15.27" />
         </Button>
-        <DataGrid HorizontalAlignment="Left" Height="328" Margin="10,64,0,0" VerticalAlignment="Top" Width="220" Background="#40009892" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding OName}" Header="菜品名称" Width="80"/>
-                <DataGridTextColumn Binding="{Binding OType}" Header="菜系" Width="70"/>
-                <DataGridTextColumn Binding="{Binding OPrice}" Header="价格" Width="70"/>
-            </DataGrid.Columns>
-        </DataGrid>
         <TextBlock HorizontalAlignment="Left" FontSize="16" FontWeight="Bold" Margin="10,35,0,0" TextWrapping="Wrap" Text="菜单列表" VerticalAlignment="Top"/>
-        <Button Style="{DynamicResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" Margin="435,0,0,0" VerticalAlignment="Top" Width="30" Height="30" Background="#FFFF8B00">
+        <Button Name="BackButton" Style="{DynamicResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" Margin="435,0,0,0" VerticalAlignment="Top" Width="30" Height="30" Background="#FFFF8B00" Click="BackButton_Click">
             <Path Data="M19,3H5C3.89,3 3,3.89 3,5V9H5V5H19V19H5V15H3V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10.08,15.58L11.5,17L16.5,12L11.5,7L10.08,8.41L12.67,11H3V13H12.67L10.08,15.58Z" Fill="White" Height="14.625" Stretch="Fill" Width="15.27" />
         </Button>
         <GroupBox Header="搜索菜品" HorizontalAlignment="Left" Height="139" Margin="255,39,0,0" VerticalAlignment="Top" Width="210">
             <Canvas HorizontalAlignment="Left" Width="190" Margin="0,0,0,-9">
                 <TextBlock TextWrapping="Wrap" Text="菜品名称"/>
-                <TextBox Height="20" FontSize="10" Padding="0" Canvas.Left="70" TextWrapping="Wrap" Canvas.Top="1" Width="120"/>
+                <TextBox Name="SearchDishName" Height="20" FontSize="10" Padding="0" Canvas.Left="70" TextWrapping="Wrap" Canvas.Top="1" Width="120" TextChanged="SearchDishName_TextChanged"/>
                 <TextBlock TextWrapping="Wrap" Text="菜         系" Canvas.Top="26"/>
-                <ComboBox Canvas.Left="68" FontSize="10" Padding="3" Canvas.Top="26" Width="122" Height="21">
+                <ComboBox Name="SearchDishTypeCombo" Canvas.Left="68" FontSize="10" Padding="3" Canvas.Top="26" Width="122" Height="21" SelectionChanged="SearchDishTypeCombo_SelectionChanged">
+                    <ComboBoxItem>全部菜系</ComboBoxItem>
                 </ComboBox>
-                <Button Content="显示全部" Canvas.Left="21" Padding="1" FontSize="12" Canvas.Top="62" Width="138" Height="22"/>
+                <Button Name="ShowAllDishButton" Content="显示全部" Canvas.Left="31" Padding="1" FontSize="12" Canvas.Top="59" Width="138" Height="22" Click="ShowAllDishButton_Click"/>
             </Canvas>
         </GroupBox>
-        <Button Content="添加菜品" HorizontalAlignment="Left" Margin="255,318,0,0" VerticalAlignment="Top" Width="210"/>
-        <GroupBox Header="修改选中菜品信息" HorizontalAlignment="Left" Height="130" Margin="255,183,0,0" VerticalAlignment="Top" Width="210">
-            <Canvas Height="79" Margin="0,0,0,-6" VerticalAlignment="Top" Width="186">
+        <Button Name="AddDishButton" Content="添加菜品" HorizontalAlignment="Left" Margin="255,345,0,0" VerticalAlignment="Top" Width="210" Click="AddDishButton_Click"/>
+        <GroupBox Header="修改选中菜品信息" HorizontalAlignment="Left" Height="157" Margin="255,183,0,0" VerticalAlignment="Top" Width="210">
+            <Canvas Height="103" Margin="0,0,0,-3" VerticalAlignment="Top" Width="186">
                 <TextBlock TextWrapping="Wrap" Text="菜品名称"/>
-                <TextBox Height="21" FontSize="10" Canvas.Left="61" TextWrapping="Wrap" Width="125"/>
+                <TextBox Name="ModifyDishName" Height="21" FontSize="10" Canvas.Left="61" TextWrapping="Wrap" Width="125" IsReadOnly="True"/>
                 <TextBlock TextWrapping="Wrap" Text="菜        系" Canvas.Top="26"/>
-                <ComboBox Canvas.Left="61" FontSize="10" Canvas.Top="26" Width="125" Height="21" Padding="1"/>
+                <ComboBox Name="ModifyDishTypeCombo" Canvas.Left="61" FontSize="10" Canvas.Top="26" Width="125" Height="21" Padding="1" IsEnabled="False"/>
                 <TextBlock TextWrapping="Wrap" Text="价        格" Canvas.Top="52"/>
-                <TextBox Height="21" TextWrapping="Wrap" FontSize="10" Text="TextBox" Width="125" Canvas.Left="61" Canvas.Top="52"/>
+                <TextBox Name="ModifyDishPrice" Height="21" TextWrapping="Wrap" FontSize="10" Width="125" Canvas.Left="61" Canvas.Top="52"/>
+                <Button Name="ModifyButton" Content="修改" Canvas.Left="27" Padding="1" FontSize="12" Canvas.Top="81" Width="138" Height="22" Click="ModifyButton_Click"/>
             </Canvas>
         </GroupBox>
-        <Button Content="删除选中" HorizontalAlignment="Left" Margin="255,360,0,0" VerticalAlignment="Top" Width="92" Background="red"/>
-        <Button Content="菜系管理" HorizontalAlignment="Left" Margin="371,360,0,0" VerticalAlignment="Top" Width="94"/>
+        <Button Name="DeleteDishButton" Content="删除选中" HorizontalAlignment="Left" Margin="255,382,0,0" VerticalAlignment="Top" Width="92" Background="red" Click="DeleteDishButton_Click"/>
+        <Button Name="DishTypeManager" Content="菜系管理" HorizontalAlignment="Left" Margin="371,382,0,0" VerticalAlignment="Top" Width="94" Click="DishTypeManager_Click"/>
+        <WrapPanel HorizontalAlignment="Left" Height="25" Margin="10,59,0,0" VerticalAlignment="Top" Width="240" Background="#40009892">
+            <Rectangle Width="16"/>
+            <TextBlock Padding="2" Text="菜品名称" TextWrapping="Wrap" />
+            <Rectangle Width="32"/>
+            <TextBlock Padding="2" Text="菜系" TextWrapping="Wrap" />
+            <Rectangle Width="32"/>
+            <TextBlock Padding="2" Text="价格" TextWrapping="Wrap" />
+        </WrapPanel>
+        <ListBox Name="DishList" HorizontalAlignment="Left" Height="330" Margin="10,84,0,0" VerticalAlignment="Top" Width="240" Background="#40009892" SelectionChanged="DishList_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden"/>
     </Grid>
 </Window>

@@ -126,6 +126,9 @@
     <Compile Include="UI\InfomationTable.xaml.cs">
       <DependentUpon>InfomationTable.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\InformationTable3.xaml.cs">
+      <DependentUpon>InformationTable3.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\MainMenuWindow.xaml.cs">
       <DependentUpon>MainMenuWindow.xaml</DependentUpon>
     </Compile>
@@ -182,6 +185,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\InfomationTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\InformationTable3.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

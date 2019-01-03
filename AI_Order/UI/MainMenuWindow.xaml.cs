@@ -157,5 +157,12 @@ namespace AI_Order
             memberInfo.Show();
             Close();
         }
+
+        private void DishInfoButton_Click(object sender, RoutedEventArgs e)
+        {
+            DishInfo dishInfo = new DishInfo();
+            dishInfo.Show();
+            Close();
+        }
     }
 }

@@ -22,9 +22,9 @@
         <Button Name="OrderButton" FontSize="20" FontFamily="Microsoft YaHei UI" Style="{DynamicResource MaterialDesignRaisedButton}" Content="点餐" HorizontalAlignment="Left" VerticalAlignment="Top" Width="183" Height="82" Cursor="Hand" Margin="10,10,0,0" Click="OrderButton_Click"/>
         <GroupBox Header="管理员功能" HorizontalAlignment="Left" Height="229" Margin="10,202,0,0" VerticalAlignment="Top" Width="183">
             <Canvas>
-                <Button Name="DishInfoButton" FontSize="20" FontFamily="Microsoft YaHei UI" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="餐桌管理" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Height="49" IsEnabled="False" Canvas.Top="63" Canvas.Left="10"/>
-                <Button Name="TableInfoButton" FontSize="20" FontFamily="Microsoft YaHei UI" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="管理员管理" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Height="50" IsEnabled="False" Canvas.Top="116" Canvas.Left="10"/>
-                <Button Name="ManagerButton" FontSize="20" FontFamily="Microsoft YaHei UI" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="菜单管理" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Height="50" IsEnabled="False" Canvas.Top="8" Canvas.Left="10"/>
+                <Button Name="TableInfoButton" FontSize="20" FontFamily="Microsoft YaHei UI" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="餐桌管理" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Height="49" IsEnabled="False" Canvas.Top="63" Canvas.Left="10"/>
+                <Button Name="ManagerButton" FontSize="20" FontFamily="Microsoft YaHei UI" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="管理员管理" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Height="50" IsEnabled="False" Canvas.Top="116" Canvas.Left="10"/>
+                <Button Name="DishInfoButton" FontSize="20" FontFamily="Microsoft YaHei UI" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Content="菜单管理" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Height="50" IsEnabled="False" Canvas.Top="8" Canvas.Left="10" Click="DishInfoButton_Click"/>
             </Canvas>
         </GroupBox>
         <Button Name="ExitButton" FontSize="20" FontFamily="Microsoft YaHei UI" Background="#FFFFAB00" Content="退出" HorizontalAlignment="Left" VerticalAlignment="Top" Width="183" Height="60" Margin="10,450,0,0" Cursor="Hand" Click="ExitButton_Click"/>
