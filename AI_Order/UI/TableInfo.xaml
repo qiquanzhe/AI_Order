@@ -1,0 +1,55 @@
+﻿<Window x:Class="AI_Order.TableInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:AI_Order"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="Source Han Sans CN Regular"
+        WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="True" MouseDown="WindowDrag" Width="432.925" Height="368.564">
+    <Grid>
+        <DockPanel HorizontalAlignment="Left" Background="#009892" Height="30" LastChildFill="False" VerticalAlignment="Top" Width="438">
+            <!--<Rectangle Width="50" Fill="Transparent"/>-->
+            <TextBlock Height="30" Padding="4" FontFamily="华文隶书" FontSize="24" Foreground="white" TextWrapping="Wrap" Text="餐桌管理" VerticalAlignment="Top" Width="326"/>
+        </DockPanel>
+        <Button Style="{DynamicResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" Margin="398,0,0,0" VerticalAlignment="Top" Width="30" Height="30" Background="#FFFF8B00">
+            <Path Data="M19,3H5C3.89,3 3,3.89 3,5V9H5V5H19V19H5V15H3V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10.08,15.58L11.5,17L16.5,12L11.5,7L10.08,8.41L12.67,11H3V13H12.67L10.08,15.58Z" Fill="White" Height="14.625" Stretch="Fill" Width="15.27" />
+        </Button>
+        <DataGrid HorizontalAlignment="Left" Height="293" Margin="10,68,0,0" VerticalAlignment="Top" Width="225" Background="#40009892">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding TNumber}" Header="餐桌号"/>
+                <DataGridTextColumn Binding="{Binding THid}" Header="所属大厅" />
+                <DataGridTextColumn Binding="{Binding IsFree}" Header="是否空闲" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock HorizontalAlignment="Left" Margin="10,42,0,0" TextWrapping="Wrap" Text="餐桌列表" VerticalAlignment="Top"/>
+        <GroupBox Header="搜索餐桌" HorizontalAlignment="Left" Height="132" Margin="240,43,0,0" VerticalAlignment="Top" Width="188">
+            <Canvas Height="79" VerticalAlignment="Top" Width="178">
+                <TextBlock TextWrapping="Wrap" Text="餐桌号"/>
+                <TextBlock TextWrapping="Wrap" Text="所属大厅" Canvas.Top="26"/>
+                <TextBox Height="21" FontSize="10" Canvas.Left="68" TextWrapping="Wrap" Width="100"/>
+                <ComboBox Canvas.Left="68" FontSize="10" Padding="1" Canvas.Top="26" Width="100" Height="21"/>
+                <Button Content="显示全部" FontSize="12" Canvas.Left="27" Canvas.Top="52" Width="113" Height="23"/>
+            </Canvas>
+        </GroupBox>
+        <GroupBox Header="添加/修改" HorizontalAlignment="Left" Height="155" Margin="240,180,0,0" VerticalAlignment="Top" Width="188">
+            <Canvas Height="104" VerticalAlignment="Top" Width="178">
+                <TextBlock TextWrapping="Wrap" Text="餐桌号"/>
+                <TextBlock TextWrapping="Wrap" Text="所属大厅" Canvas.Top="26"/>
+                <TextBox Height="21" FontSize="10" Canvas.Left="68" TextWrapping="Wrap" Width="105"/>
+                <ComboBox Canvas.Left="68" FontSize="10" Padding="1" Canvas.Top="26" Width="105" Height="21"/>
+                <Button Content="添加" Padding="2" FontSize="12" Canvas.Top="78" Width="72" Height="23"/>
+                <Button Content="修改" Padding="2" FontSize="12" Canvas.Top="78" Width="72" Height="23" Canvas.Left="96"/>
+                <TextBlock TextWrapping="Wrap" Text="使用状态" Canvas.Top="52"/>
+                <RadioButton Content="空闲" FontSize="12" Canvas.Left="68" Canvas.Top="52"/>
+                <RadioButton Content="使用中" FontSize="12" Canvas.Left="115" Canvas.Top="52"/>
+            </Canvas>
+        </GroupBox>
+        <Button Content="删除选中" Padding="2" FontSize="12" HorizontalAlignment="Left" Margin="240,340,0,0" VerticalAlignment="Top" Width="87" Background="red" Height="21"/>
+        <Button Content="大厅管理" Padding="2" FontSize="12" HorizontalAlignment="Left" Margin="341,340,0,0" VerticalAlignment="Top" Width="87" Height="21"/>
+    </Grid>
+</Window>

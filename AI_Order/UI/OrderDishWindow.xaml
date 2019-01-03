@@ -1,0 +1,60 @@
+﻿<Window x:Class="AI_Order.OrderDishWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        Title="OrderDishWindow" Height="357" Width="800"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="Source Han Sans CN Normal"
+        WindowStyle="None" ResizeMode="NoResize" MouseDown="WindowDrag">
+    <Grid>
+        <ListBox x:Name="DishTypeList" HorizontalAlignment="Left" Height="38" Margin="10,90,0,0" VerticalAlignment="Top" Width="443" SelectionChanged="DishTypeList_SelectionChanged" >
+            <ListBox.Template>
+                <ControlTemplate TargetType="{x:Type ListBox}">
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                        <WrapPanel VerticalAlignment="Center" Orientation="Horizontal" IsItemsHost="True" ScrollViewer.CanContentScroll="True"  Background="#FF70C5B2" Width="664"/>
+                    </ScrollViewer>
+                </ControlTemplate>
+            </ListBox.Template>
+        </ListBox>
+        <materialDesign:Card Padding="0" Margin="10,10,347,0" Height="61">
+            <DockPanel Margin="0,0,0,-7">
+                <TextBlock VerticalAlignment="Center" Style="{DynamicResource MaterialDesignTitleTextBlock}" Foreground="#70D6BD" FontSize="26" FontWeight="Bold" FontFamily="华文隶书" HorizontalAlignment="Left" Width="176" Margin="10,18,0,17" Height="33">点餐界面</TextBlock>
+                <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}" HorizontalAlignment="Left" FontSize="14" Width="79" Margin="10,27,0,17">您的桌号：</TextBlock>
+                <TextBlock Name="TableNameTextBlock" Style="{DynamicResource MaterialDesignTitleTextBlock}" FontSize="14" HorizontalAlignment="Left" Width="128" Margin="10,27,0,17"/>
+            </DockPanel>
+        </materialDesign:Card>
+        <Button Style="{DynamicResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" Margin="727,27,0,0" VerticalAlignment="Top" Width="44" Height="44" Background="#FFFF8B00" Click="Button_Click">
+            <Path Data="M19,3H5C3.89,3 3,3.89 3,5V9H5V5H19V19H5V15H3V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10.08,15.58L11.5,17L16.5,12L11.5,7L10.08,8.41L12.67,11H3V13H12.67L10.08,15.58Z" Fill="White" Height="22.667" Stretch="Fill" Width="23.667" />
+        </Button>
+        <TextBlock Name="sumPriceTextBlock" FontFamily="consolas" FontSize="18" Foreground="MidnightBlue" FontWeight="Bold" HorizontalAlignment="Left" Margin="506,325,0,0" TextWrapping="Wrap" Text="￥0.00" VerticalAlignment="Top" Height="24" Width="114"/>
+        <Button Padding="2" HorizontalAlignment="Left" Margin="680,325,0,0" VerticalAlignment="Top" Width="91" Height="24" Background="#009688" Click="Button_Click_1">
+            <TextBlock FontSize="14" FontFamily="Microsoft YaHei UI" FontWeight="ExtraBold" ><Run Text="提"/><InlineUIContainer>
+                    <Rectangle Width="20"/>
+                </InlineUIContainer><Run Text="交"/></TextBlock>
+        </Button>
+        <ScrollViewer Background="#09009892" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" HorizontalAlignment="Left" Height="187" Margin="10,133,0,0" VerticalAlignment="Top" Width="443">
+            <Grid Name="listDishGrid" Height="auto" Width="auto">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="217*"/>
+                    <ColumnDefinition Width="226*"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </ScrollViewer>
+        <ListBox Name="OrderList" Background="#40009892" HorizontalAlignment="Left" Height="203" Margin="482,117,0,0" VerticalAlignment="Top" Width="308" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
+        <WrapPanel Background="#40009892" HorizontalAlignment="Left" Height="22" Margin="482,95,0,0" VerticalAlignment="Top" Width="308">
+            <Rectangle Width="33" />
+            <TextBlock Text="菜品名称" Name="DishTitle" Width="83"/>
+            <TextBlock Text="单价" Name="DishPrice" Width="56"/>
+            <TextBlock Text="数量" Name="DishNumber" Width="64" />
+            <TextBlock Text="操作"  Width="67" />
+        </WrapPanel>
+    </Grid>
+</Window>

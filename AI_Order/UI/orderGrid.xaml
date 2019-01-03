@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="AI_Order.orderGrid"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:AI_Order"
+            TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+            TextElement.FontWeight="Medium"
+            TextElement.FontSize="14"
+            FontFamily="Source Han Sans CN Normal"
+             mc:Ignorable="d" d:DesignWidth="210" Width="210" Height="85">
+    <Grid>
+        <Rectangle Width="auto" Height="auto" Fill="#FF70C5B2">
+            <Rectangle.Effect>
+                <BlurEffect Radius="10"/>
+            </Rectangle.Effect>
+        </Rectangle>
+        <Image Height="65" HorizontalAlignment="Left" Margin="8,8,0,0" x:Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="63" />
+        <Label Content="Label" Height="18" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="83,37,0,0" x:Name="priceLabel" VerticalAlignment="Top" Width="117" FontFamily="Consolas" FontSize="10" Padding="3" Foreground="Red"  />
+        <Label Content="Label" Height="22" HorizontalAlignment="Left" Margin="83,10,0,0" x:Name="nameLabel" VerticalAlignment="Top" Width="117" FontFamily="Consolas" FontWeight="Bold" FontSize="14" Padding="3" />
+        <Button Style="{DynamicResource MaterialDesignRaisedDarkButton}" Content="选择" Padding="1" FontSize="8" Margin="0,60,10,0" x:Name="button1" FontWeight="Bold" Height="15" VerticalAlignment="Top" HorizontalAlignment="Right" Width="56" />
+        
+        <!--<Label Content="1" Height="23" HorizontalAlignment="Left" Margin="36,37,0,0" x:Name="recordNum" VerticalAlignment="Top" Width="25" Visibility="Hidden" />-->
+        <DockPanel HorizontalAlignment="Left" Height="10" LastChildFill="False" Margin="83,65,0,0" VerticalAlignment="Top" Width="44">
+            <Button Style="{DynamicResource MaterialDesignFloatingActionDarkButton}" Padding="0.3,4" Height="10" HorizontalAlignment="Left" x:Name="redOrderBtn" VerticalContentAlignment="Top" Width="10" IsEnabled="False" Click="redOrderBtn_Click" >
+                <Path Data="M19,13H5V11H19V13Z"  Width="6" Height="2" Fill="White" Stretch="Fill"  />
+            </Button>
+            <Label Content="1" Padding="-1" HorizontalAlignment="Left" x:Name="orderNum" Width="23" FontFamily="SimHei" FontWeight="Bold" HorizontalContentAlignment="Center" Height="10" VerticalAlignment="Top" FontSize="10" />
+
+            <Button Style="{DynamicResource MaterialDesignFloatingActionDarkButton}" Padding="0,2" Height="10" x:Name="addNumBtn" VerticalAlignment="Top" VerticalContentAlignment="Top"  HorizontalAlignment="Left" Width="10"  Click="addNumBtn_Click" >
+                <Path Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" Width="6" Height="6" Fill="White" Stretch="Fill" />
+            </Button>
+        </DockPanel>
+    </Grid>
+</UserControl>

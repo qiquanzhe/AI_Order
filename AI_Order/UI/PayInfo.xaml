@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="AI_Order.UI.PayInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        mc:Ignorable="d" 
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="Source Han Sans CN Normal"
+        d:DesignHeight="450" d:DesignWidth="800"
+        Width="341" Height="20">
+    <WrapPanel>
+        <Rectangle Width="32"/>
+        <TextBlock Name="DName" Text="菜品名称" Width="88" />
+        <TextBlock Name="DPrice" Text="单价" Width="66" />
+        <TextBlock Name="DNumber" Text="数量" Width="62"/>
+        <TextBlock Name="DSum" Text="12345678910" Width="90"/>
+    </WrapPanel>
+</UserControl>

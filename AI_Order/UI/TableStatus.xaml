@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="AI_Order.TableStatus"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AI_Order"
+             mc:Ignorable="d" Height="120" Width="100">
+    <Grid>
+        <Rectangle Width="100" Height="120" Fill="#3370C5B2">
+            <Rectangle.Effect>
+                <BlurEffect Radius="5"/>
+            </Rectangle.Effect>
+        </Rectangle>
+        <Image Name="LockStatus" Height="92" Width="92" Margin="4,4,4,0" Stretch="Fill" VerticalAlignment="Top" />
+        <Label Content="Label" Name="TableName" HorizontalAlignment="Center" Margin="4,96,4,4" Width="92" FontFamily="Microsoft YaHei UI" FontSize="10" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+    </Grid>
+</UserControl>
