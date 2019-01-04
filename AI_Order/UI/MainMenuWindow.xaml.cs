@@ -151,6 +151,7 @@ namespace AI_Order
             Close();
         }
 
+        //会员管理界面
         private void MemberButton_Click(object sender, RoutedEventArgs e)
         {
             MemberInfo memberInfo = new MemberInfo(LoginType);
@@ -158,10 +159,27 @@ namespace AI_Order
             Close();
         }
 
+        //菜品信息管理界面
         private void DishInfoButton_Click(object sender, RoutedEventArgs e)
         {
             DishInfo dishInfo = new DishInfo();
             dishInfo.Show();
+            Close();
+        }
+
+        //餐桌信息管理
+        private void TableInfoButton_Click(object sender, RoutedEventArgs e)
+        {
+            TableInfo tableInfo = new TableInfo();
+            tableInfo.Show();
+            Close();
+        }
+
+        //管理员管理
+        private void ManagerButton_Click(object sender, RoutedEventArgs e)
+        {
+            ManagerInfo managerInfo = new ManagerInfo();
+            managerInfo.Show();
             Close();
         }
     }

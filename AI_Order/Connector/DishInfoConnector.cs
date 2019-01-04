@@ -50,7 +50,6 @@ namespace AI_Order.Connector
                     mySqlDataReader.GetString("DTitle"),
                     mySqlDataReader.GetInt32("DTypeId"),
                     mySqlDataReader.GetDouble("DPrice"),
-                    mySqlDataReader.GetString("DChar"),
                     (byte[])mySqlDataReader["DPic"]);
                 dishes.Add(dish);
             }
@@ -75,7 +74,6 @@ namespace AI_Order.Connector
                         mySqlDataReader.GetString("DTitle"),
                         mySqlDataReader.GetInt32("DTypeId"),
                         mySqlDataReader.GetDouble("DPrice"),
-                        mySqlDataReader.GetString("DChar"),
                         (byte[])mySqlDataReader["DPic"]);
             }
             return dish;
@@ -97,7 +95,6 @@ namespace AI_Order.Connector
                         mySqlDataReader.GetString("DTitle"),
                         mySqlDataReader.GetInt32("DTypeId"),
                         mySqlDataReader.GetDouble("DPrice"),
-                        mySqlDataReader.GetString("DChar"),
                         (byte[])mySqlDataReader["DPic"]);
             }
             return dish;
@@ -122,7 +119,6 @@ namespace AI_Order.Connector
                         mySqlDataReader.GetString("DTitle"),
                         mySqlDataReader.GetInt32("DTypeId"),
                         mySqlDataReader.GetDouble("DPrice"),
-                        mySqlDataReader.GetString("DChar"),
                         (byte[])mySqlDataReader["DPic"]);
                 dishes.Add(dish);
             }
@@ -170,7 +166,6 @@ namespace AI_Order.Connector
                         mySqlDataReader.GetString("DTitle"),
                         mySqlDataReader.GetInt32("DTypeId"),
                         mySqlDataReader.GetDouble("DPrice"),
-                        mySqlDataReader.GetString("DChar"),
                         (byte[])mySqlDataReader["DPic"]);
                 dishes.Add(dish);
             }
@@ -205,6 +200,77 @@ namespace AI_Order.Connector
             String sql = "delete from dishinfo where DTitle='" + DTitle + "' and DTypeId=" + DTypeId;
             MySqlCommand mySqlCommand = new MySqlCommand(sql, conn);
 
+            return mySqlCommand.ExecuteNonQuery();
+        }
+
+        /*
+         * 添加菜品信息
+         * */
+        public static int InsertDish(String DTitle,int DTypeId,double DPrice,ref byte[] DPic)
+        {
+            List<Dish> dishes = GetDishes(DTypeId, DTitle);
+            if (dishes.Count != 0)
+                return -1;
+
+            String connectStr = ConnectorInfo.connectStr;
+            MySqlConnection conn = new MySqlConnection(connectStr);
+            conn.Open();
+
+            String sql = "insert into dishinfo(DTitle,DTypeId,DPrice,DPic) values(@DTitle,@DTypeId,@DPrice,@DPic)";
+            MySqlCommand mySqlCommand = new MySqlCommand(sql, conn);
+            mySqlCommand.Parameters.AddWithValue("@DTitle", DTitle);
+            mySqlCommand.Parameters.AddWithValue("@DTypeId", DTypeId);
+            mySqlCommand.Parameters.AddWithValue("@DPrice", DPrice);
+            mySqlCommand.Parameters.AddWithValue("@DPic", DPic);
+
+            return mySqlCommand.ExecuteNonQuery();
+        }
+
+        /**
+         * 添加菜系信息
+         * */
+         public static int InsertDishType(String DtTitle)
+        {
+            String connectStr = ConnectorInfo.connectStr;
+            MySqlConnection conn = new MySqlConnection(connectStr);
+            conn.Open();
+
+            String sql = "select * from dishtypeinfo where DtTitle='" + DtTitle + "'";
+            MySqlCommand mySqlCommand = new MySqlCommand(sql, conn);
+            MySqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader();
+            if (mySqlDataReader.Read())
+                return -1;
+            mySqlDataReader.Close();
+
+            sql = "insert into dishtypeinfo(DtTitle) values('" + DtTitle + "')";
+            mySqlCommand = new MySqlCommand(sql, conn);
+
+            return mySqlCommand.ExecuteNonQuery();
+        }
+
+        /*
+         * 删除菜系
+         * */
+        public static int DeleteDishType(String DtTitle)
+        {
+            String connectStr = ConnectorInfo.connectStr;
+            MySqlConnection conn = new MySqlConnection(connectStr);
+            conn.Open();
+
+            String sql = "select * from dishtypeinfo where DtTitle='" + DtTitle + "'";
+            MySqlCommand mySqlCommand = new MySqlCommand(sql, conn);
+            MySqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader();
+            int DtId = 0;
+            if (mySqlDataReader.Read())
+                DtId = mySqlDataReader.GetInt32("DtId");
+            mySqlDataReader.Close();
+
+            sql = "update dishinfo set DTypeId=0 where DTypeId="+DtId;
+            mySqlCommand = new MySqlCommand(sql, conn);
+            mySqlCommand.ExecuteNonQuery();
+
+            sql = "delete from dishtypeinfo where DtId=" + DtId;
+            mySqlCommand = new MySqlCommand(sql, conn);
             return mySqlCommand.ExecuteNonQuery();
         }
     }

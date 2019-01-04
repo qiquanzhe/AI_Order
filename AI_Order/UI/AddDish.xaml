@@ -73,19 +73,19 @@
             <!--<Rectangle Width="50" Fill="Transparent"/>-->
             <TextBlock Height="30" Padding="8" FontFamily="华文隶书" FontSize="18" Foreground="white" TextWrapping="Wrap" Text="添加菜品界面" VerticalAlignment="Top" Width="288"/>
         </DockPanel>
-        <Button Style="{DynamicResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" Margin="251,0,0,0" VerticalAlignment="Top" Width="30" Height="30" Background="#FFFF8B00">
+        <Button Name="BackButton" Style="{DynamicResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" Margin="251,0,0,0" VerticalAlignment="Top" Width="30" Height="30" Background="#FFFF8B00" Click="BackButton_Click">
             <Path Data="M19,3H5C3.89,3 3,3.89 3,5V9H5V5H19V19H5V15H3V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10.08,15.58L11.5,17L16.5,12L11.5,7L10.08,8.41L12.67,11H3V13H12.67L10.08,15.58Z" Fill="White" Height="14.625" Stretch="Fill" Width="15.27" />
         </Button>
         <TextBlock HorizontalAlignment="Left" FontSize="14" Margin="10,41,0,0" TextWrapping="Wrap" Text="名称" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" FontSize="14" Margin="10,77,0,0" TextWrapping="Wrap" Text="菜系" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" FontSize="14" Margin="10,115,0,0" TextWrapping="Wrap" Text="价格" VerticalAlignment="Top"/>
-        <TextBox FontSize="10" Text="123" HorizontalAlignment="Left" Height="21" Margin="43,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145"/>
-        <ComboBox FontSize="10" Padding="3" HorizontalAlignment="Left" Margin="43,77,0,0" VerticalAlignment="Top" Width="145" Height="21" SelectedIndex="0">
+        <TextBox Name="AddDishName" FontSize="10" HorizontalAlignment="Left" Height="21" Margin="43,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145"/>
+        <ComboBox Name="AddDishType" FontSize="10" Padding="3" HorizontalAlignment="Left" Margin="43,77,0,0" VerticalAlignment="Top" Width="145" Height="21" SelectedIndex="0">
         </ComboBox>
-        <TextBox HorizontalAlignment="Left" FontSize="10" Height="21" Margin="43,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145"/>
-        <Image HorizontalAlignment="Left" Height="71" Margin="201,41,0,0" VerticalAlignment="Top" Width="71"/>
-        <Button Padding="-1" FontSize="10" Content="选择图片" HorizontalAlignment="Left" Margin="201,117,0,0" VerticalAlignment="Top" Width="71" Height="19"/>
-        <Label FontSize="10" HorizontalAlignment="Left" Margin="10,143,0,0" VerticalAlignment="Top" Width="271" Height="14"/>
-        <Button FontSize="12" Padding="2" Content="添加" HorizontalAlignment="Left" Margin="73,162,0,0" VerticalAlignment="Top" Width="166" Height="22"/>
+        <TextBox Name="AddDishPrice" HorizontalAlignment="Left" FontSize="10" Height="21" Margin="43,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145"/>
+        <Image Name="DishImage" HorizontalAlignment="Left" Height="71" Margin="201,41,0,0" VerticalAlignment="Top" Width="71"/>
+        <Button Name="AddDishImageButton" Padding="-1" FontSize="10" Content="选择图片" HorizontalAlignment="Left" Margin="201,117,0,0" VerticalAlignment="Top" Width="71" Height="19" Click="AddDishImageButton_Click"/>
+        <Label Name="ImagePathLabel" HorizontalContentAlignment="Center" Content="请选择图片" Padding="0" Foreground="#40000000" FontSize="10" HorizontalAlignment="Left" Margin="10,143,0,0" VerticalAlignment="Top" Width="271" Height="14"/>
+        <Button Name="AddDishButton" FontSize="12" Padding="2" Content="添加" HorizontalAlignment="Left" Margin="73,162,0,0" VerticalAlignment="Top" Width="166" Height="22" Click="AddDishButton_Click"/>
     </Grid>
 </Window>

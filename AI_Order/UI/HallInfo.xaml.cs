@@ -21,8 +21,12 @@ namespace AI_Order
     {
         public HallInfo()
         {
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;//显示在屏幕中间
             InitializeComponent();
         }
+
+
+
         /*
         * 鼠标拖动窗口的方法
         * */

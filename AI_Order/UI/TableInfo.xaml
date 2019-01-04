@@ -10,46 +10,48 @@
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
         FontFamily="Source Han Sans CN Regular"
-        WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="True" MouseDown="WindowDrag" Width="432.925" Height="368.564">
+        WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="True" MouseDown="WindowDrag" Width="449.793" Height="368.564">
     <Grid>
-        <DockPanel HorizontalAlignment="Left" Background="#009892" Height="30" LastChildFill="False" VerticalAlignment="Top" Width="438">
+        <DockPanel HorizontalAlignment="Left" Background="#009892" Height="30" LastChildFill="False" VerticalAlignment="Top" Width="451">
             <!--<Rectangle Width="50" Fill="Transparent"/>-->
             <TextBlock Height="30" Padding="4" FontFamily="华文隶书" FontSize="24" Foreground="white" TextWrapping="Wrap" Text="餐桌管理" VerticalAlignment="Top" Width="326"/>
         </DockPanel>
-        <Button Style="{DynamicResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" Margin="398,0,0,0" VerticalAlignment="Top" Width="30" Height="30" Background="#FFFF8B00">
+        <Button Name="BackButton" Style="{DynamicResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" Margin="413,0,0,0" VerticalAlignment="Top" Width="30" Height="30" Background="#FFFF8B00" Click="BackButton_Click">
             <Path Data="M19,3H5C3.89,3 3,3.89 3,5V9H5V5H19V19H5V15H3V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10.08,15.58L11.5,17L16.5,12L11.5,7L10.08,8.41L12.67,11H3V13H12.67L10.08,15.58Z" Fill="White" Height="14.625" Stretch="Fill" Width="15.27" />
         </Button>
-        <DataGrid HorizontalAlignment="Left" Height="293" Margin="10,68,0,0" VerticalAlignment="Top" Width="225" Background="#40009892">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding TNumber}" Header="餐桌号"/>
-                <DataGridTextColumn Binding="{Binding THid}" Header="所属大厅" />
-                <DataGridTextColumn Binding="{Binding IsFree}" Header="是否空闲" />
-            </DataGrid.Columns>
-        </DataGrid>
         <TextBlock HorizontalAlignment="Left" Margin="10,42,0,0" TextWrapping="Wrap" Text="餐桌列表" VerticalAlignment="Top"/>
-        <GroupBox Header="搜索餐桌" HorizontalAlignment="Left" Height="132" Margin="240,43,0,0" VerticalAlignment="Top" Width="188">
+        <GroupBox Header="搜索餐桌" HorizontalAlignment="Left" Height="132" Margin="255,42,0,0" VerticalAlignment="Top" Width="188">
             <Canvas Height="79" VerticalAlignment="Top" Width="178">
-                <TextBlock TextWrapping="Wrap" Text="餐桌号"/>
+                <TextBlock TextWrapping="Wrap" Text="餐桌"/>
                 <TextBlock TextWrapping="Wrap" Text="所属大厅" Canvas.Top="26"/>
-                <TextBox Height="21" FontSize="10" Canvas.Left="68" TextWrapping="Wrap" Width="100"/>
-                <ComboBox Canvas.Left="68" FontSize="10" Padding="1" Canvas.Top="26" Width="100" Height="21"/>
-                <Button Content="显示全部" FontSize="12" Canvas.Left="27" Canvas.Top="52" Width="113" Height="23"/>
+                <TextBox Name="SearchTableName" Height="21" FontSize="10" Canvas.Left="68" TextWrapping="Wrap" Width="100" TextChanged="SearchTableName_TextChanged"/>
+                <ComboBox Name="SearchHallCombo" Canvas.Left="68" FontSize="10" Padding="1" Canvas.Top="26" Width="100" Height="21" SelectionChanged="SearchHallCombo_SelectionChanged">
+                    <ComboBoxItem>全部大厅</ComboBoxItem>
+                </ComboBox>
+                <Button Padding="2" Name="ShowAllDishesButton" Content="显示全部" FontSize="12" Canvas.Left="27" Canvas.Top="52" Width="113" Height="23" Click="ShowAllDishesButton_Click"/>
             </Canvas>
         </GroupBox>
-        <GroupBox Header="添加/修改" HorizontalAlignment="Left" Height="155" Margin="240,180,0,0" VerticalAlignment="Top" Width="188">
+        <GroupBox Header="添加/修改" HorizontalAlignment="Left" Height="155" Margin="255,180,0,0" VerticalAlignment="Top" Width="188">
             <Canvas Height="104" VerticalAlignment="Top" Width="178">
-                <TextBlock TextWrapping="Wrap" Text="餐桌号"/>
+                <TextBlock TextWrapping="Wrap" Text="餐桌"/>
                 <TextBlock TextWrapping="Wrap" Text="所属大厅" Canvas.Top="26"/>
-                <TextBox Height="21" FontSize="10" Canvas.Left="68" TextWrapping="Wrap" Width="105"/>
-                <ComboBox Canvas.Left="68" FontSize="10" Padding="1" Canvas.Top="26" Width="105" Height="21"/>
-                <Button Content="添加" Padding="2" FontSize="12" Canvas.Top="78" Width="72" Height="23"/>
-                <Button Content="修改" Padding="2" FontSize="12" Canvas.Top="78" Width="72" Height="23" Canvas.Left="96"/>
+                <TextBox Name="ModifyTableName" Height="21" FontSize="10" Canvas.Left="68" TextWrapping="Wrap" Width="105"/>
+                <ComboBox Name="ModifyHallCombo" Canvas.Left="68" FontSize="10" Padding="1" Canvas.Top="26" Width="105" Height="21"/>
+                <Button Name="AddTableButton" Content="添加" Padding="2" FontSize="12" Canvas.Top="78" Width="72" Height="23" Click="AddTableButton_Click"/>
+                <Button Name="ModifyTableButton" Content="修改" Padding="2" FontSize="12" Canvas.Top="78" Width="72" Height="23" Canvas.Left="96" Click="ModifyTableButton_Click"/>
                 <TextBlock TextWrapping="Wrap" Text="使用状态" Canvas.Top="52"/>
-                <RadioButton Content="空闲" FontSize="12" Canvas.Left="68" Canvas.Top="52"/>
-                <RadioButton Content="使用中" FontSize="12" Canvas.Left="115" Canvas.Top="52"/>
+                <RadioButton Name="FreeRadio" Content="空闲" FontSize="12" Canvas.Left="68" Canvas.Top="52"/>
+                <RadioButton Name="NonFreeRadio" Content="使用中" FontSize="12" Canvas.Left="115" Canvas.Top="52"/>
             </Canvas>
         </GroupBox>
-        <Button Content="删除选中" Padding="2" FontSize="12" HorizontalAlignment="Left" Margin="240,340,0,0" VerticalAlignment="Top" Width="87" Background="red" Height="21"/>
-        <Button Content="大厅管理" Padding="2" FontSize="12" HorizontalAlignment="Left" Margin="341,340,0,0" VerticalAlignment="Top" Width="87" Height="21"/>
+        <Button Name="DeleteTableButton" Content="删除选中" Padding="2" FontSize="12" HorizontalAlignment="Left" Margin="255,340,0,0" VerticalAlignment="Top" Width="87" Background="red" Height="21" Click="DeleteTableButton_Click"/>
+        <Button Name="HallInfoButton" Content="大厅管理" Padding="2" FontSize="12" HorizontalAlignment="Left" Margin="356,340,0,0" VerticalAlignment="Top" Width="87" Height="21" Click="HallInfoButton_Click"/>
+        <ListBox Name="TableList" HorizontalAlignment="Left" Height="265" Margin="10,94,0,0" VerticalAlignment="Top" Width="240" Background="#40009892" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionChanged="TableList_SelectionChanged"/>
+        <WrapPanel Height="26" Margin="10,68,200,0" VerticalAlignment="Top">
+            <Rectangle Width="23"/>
+            <TextBlock Padding="2" Text="餐桌" Width="69"/>
+            <TextBlock Padding="2" Text="所属大厅" Width="72"/>
+            <TextBlock Padding="2" Text="是否空闲" Width="66"/>
+        </WrapPanel>
     </Grid>
 </Window>

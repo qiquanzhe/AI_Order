@@ -12,16 +12,14 @@ namespace AI_Order.DataStruct
         public String DTitle;
         public int DTypeId;
         public double DPrice;
-        public String DChar;
         public byte[] DPic;
 
-        public Dish(int dId, string dTitle, int dTypeId, double dPrice, string dChar, byte[] dPic)
+        public Dish(int dId, string dTitle, int dTypeId, double dPrice,  byte[] dPic)
         {
             DId = dId;
             DTitle = dTitle;
             DTypeId = dTypeId;
             DPrice = dPrice;
-            DChar = dChar;
             DPic = dPic;
         }
     }
