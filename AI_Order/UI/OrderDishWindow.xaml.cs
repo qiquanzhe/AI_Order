@@ -82,7 +82,7 @@ namespace AI_Order
         }
 
         //选中菜系时候的事件
-        private void DishTypeList_SelectionChanged(object sender, SelectionChangedEventArgs e) => LoadDishList(DishTypeList.SelectedIndex + 1);
+        private void DishTypeList_SelectionChanged(object sender, SelectionChangedEventArgs e) => LoadDishList(DishTypeList.SelectedIndex );
 
         //加载菜品
         private void LoadDishList(int DTypeId)

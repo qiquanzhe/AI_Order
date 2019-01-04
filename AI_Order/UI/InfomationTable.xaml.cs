@@ -32,5 +32,11 @@ namespace AI_Order.UI
             Left_TB.Text = memberTypeData.MTitle;
             Right_TB.Text = memberTypeData.MDiscount.ToString();
         }
+        public InfomationTable(ManagerInfoData manager)
+        {
+            InitializeComponent();
+            Left_TB.Text = manager.MName;
+            Right_TB.Text = manager.MType == 1 ? "经理" : "店员";
+        }
     }
 }

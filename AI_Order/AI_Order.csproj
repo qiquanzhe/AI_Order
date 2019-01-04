@@ -103,6 +103,7 @@
     <Compile Include="DataStruct\Dish.cs" />
     <Compile Include="DataStruct\DishTypeData.cs" />
     <Compile Include="DataStruct\HallInfoData.cs" />
+    <Compile Include="DataStruct\ManagerInfoData.cs" />
     <Compile Include="DataStruct\MemberInfoData.cs" />
     <Compile Include="DataStruct\MemberTypeData.cs" />
     <Compile Include="DataStruct\TableInfoData.cs" />

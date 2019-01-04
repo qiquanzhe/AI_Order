@@ -73,5 +73,52 @@ namespace AI_Order.Connector
                 hallInfoData = new HallInfoData(mySqlDataReader.GetInt16("HId"), mySqlDataReader.GetString("HTitle"));
             return hallInfoData;
         }
+
+        /*
+         * 添加餐厅
+         * */
+        public static int InsertHall(String HTitle)
+        {
+            if (GetHallInfoData(HTitle) != null)
+                return -1;
+
+            String connectStr = ConnectorInfo.connectStr;
+            MySqlConnection conn = new MySqlConnection(connectStr);
+            conn.Open();
+
+            String sql = "insert into hallinfo(HTitle) values('" + HTitle + "')";
+            MySqlCommand mySqlCommand = new MySqlCommand(sql, conn);
+
+            return mySqlCommand.ExecuteNonQuery();
+        }
+
+        /**
+         * 删除餐厅，先检查当前餐厅所有桌子的状态，如果有非空闲桌子则不能删除
+         * */
+        public static int DeleteHall(String HTitle)
+        {
+            List<TableInfoData> tableInfoDatas =
+                TableInfoConnector.GetTableInfoDatas(GetHallInfoData(HTitle).HId);
+            foreach (TableInfoData tableInfoData in tableInfoDatas)
+            {
+                if (tableInfoData.TIsFree == 0)
+                {
+                    return -1;
+                }
+            }
+
+            String connectStr = ConnectorInfo.connectStr;
+            MySqlConnection conn = new MySqlConnection(connectStr);
+            conn.Open();
+
+            //先删除所有桌子
+            String sql = "delete from tableinfo where HId=" + GetHallInfoData(HTitle).HId;
+            MySqlCommand mySqlCommand = new MySqlCommand(sql, conn);
+            mySqlCommand.ExecuteNonQuery();
+
+            sql = "delete from hallinfo where HTitle='" + HTitle + "'";
+            mySqlCommand = new MySqlCommand(sql, conn);
+            return mySqlCommand.ExecuteNonQuery();
+        }
     }
 }
