@@ -142,9 +142,6 @@
     <Compile Include="UI\MemberType.xaml.cs">
       <DependentUpon>MemberType.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\myConfirmDialog.xaml.cs">
-      <DependentUpon>myConfirmDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\OrderContainer.xaml.cs">
       <DependentUpon>OrderContainer.xaml</DependentUpon>
     </Compile>
@@ -154,7 +151,6 @@
     <Compile Include="UI\orderGrid.xaml.cs">
       <DependentUpon>orderGrid.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DataStruct\orderInfo.cs" />
     <Compile Include="UI\OrderPay.xaml.cs">
       <DependentUpon>OrderPay.xaml</DependentUpon>
     </Compile>
@@ -168,7 +164,6 @@
       <DependentUpon>TableStatus.xaml</DependentUpon>
     </Compile>
     <Compile Include="Connector\ValidCode.cs" />
-    <Compile Include="DataStruct\WhatToOrder.cs" />
     <Page Include="UI\AddDish.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -193,10 +188,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\list.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UI\MainMenuWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -210,10 +201,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\MemberType.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\myConfirmDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -233,14 +220,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="styles\listStyle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="styles\loginStyle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UI\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -248,10 +227,6 @@
     <Compile Include="UI\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Connector\ConnectMysql.cs" />
-    <Compile Include="UI\list.xaml.cs">
-      <DependentUpon>list.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
