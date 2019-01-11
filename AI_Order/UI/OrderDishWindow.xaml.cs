@@ -40,7 +40,7 @@ namespace AI_Order
             LoadExistOrder();
             TableNameTextBlock.Text = tableInfo.hall.HName + tableInfo.TTitle + "桌";
             AddDishTypeList();
-            DishTypeList.SelectedIndex = 0;
+            DishTypeList.SelectedIndex = 1;
         }
 
         // 鼠标拖动窗口的方法

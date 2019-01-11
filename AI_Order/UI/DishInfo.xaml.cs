@@ -89,7 +89,7 @@ namespace AI_Order
             String DTitle = ((InformationTable3)DishList.SelectedItem).Mid_TB.Text;
             int DtId = DishInfoConnector.GetDish(((InformationTable3)DishList.SelectedItem).Left_TB.Text).DTypeId;
             ModifyDishTypeCombo.IsEnabled = true;
-            ModifyDishTypeCombo.SelectedIndex = DtId - 1;
+            ModifyDishTypeCombo.SelectedIndex = DtId ;
             ModifyDishTypeCombo.IsEnabled = false;
         }
 

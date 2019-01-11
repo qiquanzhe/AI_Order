@@ -154,9 +154,8 @@ namespace AI_Order.Connector
             conn.Open();
 
             List<Dish> dishes = new List<Dish>();
-
             String sql = "select * from dishinfo where DTitle like '" + DTitle + "%'" +
-                (DtId == 0 ? "" : ("and DTypeId="+DtId));
+                (DtId == 0 ? "" : ("and DTypeId="+(DtId-1)));
             MySqlCommand mySqlCommand = new MySqlCommand(sql, conn);
             MySqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader();
 

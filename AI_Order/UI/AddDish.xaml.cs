@@ -95,7 +95,7 @@ namespace AI_Order
             }
 
             byte[] bytesOfPic = File.ReadAllBytes(openFileDialog.FileName);
-            int AddResult = DishInfoConnector.InsertDish(AddDishName.Text, AddDishType.SelectedIndex + 1, DPrice, ref bytesOfPic);
+            int AddResult = DishInfoConnector.InsertDish(AddDishName.Text, AddDishType.SelectedIndex , DPrice, ref bytesOfPic);
             if(AddResult == -1)
             {
                 MessageBox.Show("已存在的菜品");

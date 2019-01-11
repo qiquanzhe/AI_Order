@@ -108,7 +108,7 @@ namespace AI_Order
             if (informationTable3.Right_TB.Text == "是")
                 FreeRadio.IsChecked = true;
             else
-                NonFreeRadio.IsChecked = false;
+                NonFreeRadio.IsChecked = true;
         }
 
         //搜索输入框文字发生改变时进行模糊查询

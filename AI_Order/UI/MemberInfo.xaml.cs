@@ -149,7 +149,7 @@ namespace AI_Order
                 return;
             }
             PayInfo payInfo = (PayInfo)listBoxItem.Content;
-            MemberTypes.SelectedIndex = MemberInfoConnector.GetMemberType(payInfo.DName.Text).MtId - 1;
+            MemberTypes.SelectedIndex = MemberInfoConnector.GetMemberType(payInfo.DName.Text).MtId ;
             MemberName.Text = payInfo.DPrice.Text;
             MemberMoney.Text = payInfo.DNumber.Text;
             MemberPhone.Text = payInfo.DSum.Text;
@@ -195,7 +195,7 @@ namespace AI_Order
             }
 
             int IsInserted =
-                MemberInfoConnector.InsertMember(MemberTypes.SelectedIndex+1,MemberName.Text, MemberPhone.Text, MbMoney);
+                MemberInfoConnector.InsertMember(MemberTypes.SelectedIndex,MemberName.Text, MemberPhone.Text, MbMoney);
 
             if(IsInserted == -1)
             {
